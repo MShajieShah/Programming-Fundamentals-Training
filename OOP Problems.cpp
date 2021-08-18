@@ -64,53 +64,35 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 using namespace std;
-
-class Fruit
-{
-public:
-	int info(int n) 
-	{
-		amount_fruit = n;
-	}
-	int show() 
-	{
-		return amount_fruit;
-	}
-protected:
-	int amount_fruit{ 0 };
-
-
+static int orange = 0, blackberry = 0;
+class Fruit_and_Vegetables{
+    public:
+    Fruit_and_Vegetables(){}
+    void display(){
+        cout<<"No. of Blackberry: "<<blackberry<<endl;
+        cout<<"No. of Oranges: "<<orange<<endl;
+        cout<<"Total Fruits in Basket: "<<blackberry + orange;
+    }
 };
-
-
-class BlackBerry :public Fruit
-{
-public:
+class Blackberry{
+    public:
+    Blackberry(){
+        blackberry++;
+    }
 };
-class Oranges :public Fruit
-{
-public:
+class Orange{
+    public:
+    Orange(){
+        orange++;
+    }
 };
-
-
-int main()
-{
-    BlackBerry blackberry;
-	Oranges orange;
-	int numb_fruit;
-	cout << "Enter the number of apples: ";
-	cin >> numb_fruit;
-	blackberry.info(numb_fruit);
-	cout << "Enter the number of mangoes: ";
-	cin >> numb_fruit;
-	orange.info(numb_fruit);
-	cout << "Quanity of blackberry in the basket " << blackberry.show() << endl;
-	cout << "Quanity orange in the basket " << orange.show() << endl;
-	cout << "The total number of fruits in the basket " << blackberry.show() + orange.show() << endl;
-	return 0;
-};
-
-
+int main(){
+    Blackberry a, b, c, d;
+    Orange e, f, g, h;
+    Fruit_and_Vegetables basket;
+    basket.display();
+    return 0;
+}
 
 //------------------------------------------------------------------------------------------------------------------------
 // Q#3 Create a class animal with a function animalSound() that prints "The animal makes a sound".
@@ -248,11 +230,11 @@ class student
         int   rollNo;
         int   total;
     public:
-        void info();
-        void print();
+        void setDisplay();
+        void getDisplay();
 };
  
-void student::info(){
+void student::setDisplay(){
     cout << "Enter name: " ;
     cin >> name;
     cout << "Enter roll number: ";
@@ -261,7 +243,7 @@ void student::info(){
     cin >> total;
 }
  
-void student::print()
+void student::getDisplay()
 {
     cout << "Name:"<< name<<endl;
     cout << "Roll Number:" << rollNo<<endl; 
@@ -279,14 +261,14 @@ int main()
      
     for(int i=0; i< n; i++){
         cout << "Enter details of student " << ":\n";
-        std[i].info();
+        std[i].setDisplay();
     }
      
     cout << endl;
      
     for(int j=0; j< n; j++){
         cout << "Details of student " << ":\n";
-        std[j].print();
+        std[j].getDisplay();
     }
     cout<<endl;
     return 0;
