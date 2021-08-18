@@ -62,50 +62,53 @@ int main() {
 // Calculate the number of BlackBerry and Oranges in the basket.
 // Calculate total number of fruits in the basket.
 //------------------------------------------------------------------------------------------------------------------------
-#include <iostream> 
+#include <iostream>
 using namespace std;
 
-static int mangoes = 0, apples = 0;
-class Fruit {
-    public:
-    int nFruits;
-    void cal_no_of_fruit(){
-        nFruits = mangoes+apples;
-    }
-    void display(){
-        cout<<"Total No. of fruits are "<< nFruits<<endl;
-        cout<<"Number of apples are in the basket "<< apples<<endl;
-        cout<<"Number of apples are in the basket"<< mangoes;
-    }
-    
+class Fruit
+{
+public:
+	int info(int n) 
+	{
+		amount_fruit = n;
+	}
+	int show() 
+	{
+		return amount_fruit;
+	}
+protected:
+	int amount_fruit{ 0 };
+
+
 };
 
 
-class Apples : public Fruit{
-    public:
-    Apples(){
-        
-        apples=12;
-    }
+class BlackBerry :public Fruit
+{
+public:
 };
-class Mangoes : public Fruit{
-    public:
-    Mangoes(){
-        mangoes=12;
-    }
-};
-
-int main(){
-Apples p;
-Mangoes m;
-Fruit f;
-f.cal_no_of_fruit();
-f.display();
-return 0;
+class Oranges :public Fruit
+{
+public:
 };
 
 
-
+int main()
+{
+    BlackBerry blackberry;
+	Oranges orange;
+	int numb_fruit;
+	cout << "Enter the number of apples: ";
+	cin >> numb_fruit;
+	blackberry.info(numb_fruit);
+	cout << "Enter the number of mangoes: ";
+	cin >> numb_fruit;
+	orange.info(numb_fruit);
+	cout << "Quanity of blackberry in the basket " << blackberry.show() << endl;
+	cout << "Quanity orange in the basket " << orange.show() << endl;
+	cout << "The total number of fruits in the basket " << blackberry.show() + orange.show() << endl;
+	return 0;
+};
 
 
 
@@ -146,21 +149,9 @@ int main() {
   Pig myPig;
   Dog myDog;
     myAnimal.animalSound();
-    string animal;
-    cout<<"Enter the animal: ";
-    cin>>animal;
-    if (animal == "dog")
-    {
+    myPig.animalSound();
     myDog.animalSound();
-    }
-    else if(animal == "pig")
-    {
-        myPig.animalSound();
-    }
 };
-
-
-
 
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -247,26 +238,56 @@ int main()
 // Write a Print() function in main method to print the details of students.
 //------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-using namespace std; 
+using namespace std;
+ 
+ 
 class student
 {
     private:
-        char  name[30] = "Shajie";
-        int   rollNo = 123 ;
-        int   total = 300 ;
+        char  name[30];
+        int   rollNo;
+        int   total;
     public:
+        void info();
         void print();
 };
-void student::print(){
-    cout << "Student details:\n";
-    cout << "Name:"<< name << endl<< "Roll Number:" << rollNo <<endl<< "Marks:" << total;
+ 
+void student::info(){
+    cout << "Enter name: " ;
+    cin >> name;
+    cout << "Enter roll number: ";
+    cin >> rollNo;
+    cout << "Enter total marks out of 500: ";
+    cin >> total;
 }
-
-
-
+ 
+void student::print()
+{
+    cout << "Name:"<< name<<endl;
+    cout << "Roll Number:" << rollNo<<endl; 
+    cout << "Total:" << total<<endl;
+    cout<< endl;
+}
+ 
 int main()
 {
-    student std;
-    std.print();
+    student std[10];
+    int n;
+     
+    cout << "Enter total number of students: ";
+    cin >> n;
+     
+    for(int i=0; i< n; i++){
+        cout << "Enter details of student " << ":\n";
+        std[i].info();
+    }
+     
+    cout << endl;
+     
+    for(int j=0; j< n; j++){
+        cout << "Details of student " << ":\n";
+        std[j].print();
+    }
+    cout<<endl;
+    return 0;
 };
-
