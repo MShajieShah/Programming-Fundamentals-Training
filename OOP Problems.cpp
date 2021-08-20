@@ -64,36 +64,54 @@ int main() {
 //------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
 using namespace std;
-static int orange = 0, blackberry = 0;
-class Fruit_and_Vegetables{
-    public:
-    Fruit_and_Vegetables(){}
-    void display(){
-        cout<<"No. of Blackberry: "<<blackberry<<endl;
-        cout<<"No. of Oranges: "<<orange<<endl;
-        cout<<"Total Fruits in Basket: "<<blackberry + orange;
+class Fruits
+{
+public:
+    static int noOfFruits;
+    Fruits(){
+    noOfFruits++;
+     
+    }
+      void display(){
+        cout<<"Total Fruits in Basket: "<<noOfFruits;
     }
 };
-class Blackberry{
-    public:
-    Blackberry(){
-        blackberry++;
-    }
-};
-class Orange{
-    public:
+int Fruits::noOfFruits;
+class Orange: public Fruits
+{
+public:
+    static int orange;
     Orange(){
-        orange++;
+     orange++;
+        
+    }
+    void display(){
+        cout<<"Total Orange in Basket: "<<orange<<endl;
     }
 };
-int main(){
-    Blackberry a, b, c, d;
-    Orange e, f, g, h;
-    Fruit_and_Vegetables basket;
-    basket.display();
-    return 0;
-}
-
+int Orange::orange;
+class Blackberry: public Fruits
+{
+public:
+    static int blackberry;
+    Blackberry(){
+      blackberry++;
+        
+    }
+    void display(){
+        cout<<"Total blackberry in Basket: "<<blackberry<<endl;
+    }
+};
+int Blackberry::blackberry;
+int main()
+{
+    Orange a,b,c;
+    a.display();
+    Blackberry e,f,g;
+    e.display();
+    e.Fruits::display();    // parent function calling through child class
+   return 0;
+};
 //------------------------------------------------------------------------------------------------------------------------
 // Q#3 Create a class animal with a function animalSound() that prints "The animal makes a sound".
 // Create another class Pig inherit from Animal with a function animalSound() that prints "The pig says:Wee Wee".
@@ -219,57 +237,43 @@ int main()
 // Q#5 Create a class Student with private data members: Name, Age, Marks, RollNo.
 // Write a Print() function in main method to print the details of students.
 //------------------------------------------------------------------------------------------------------------------------
-#include <iostream>
+#include<iostream>
 using namespace std;
- 
- 
-class student
+class Student
 {
     private:
-        char  name[30];
-        int   rollNo;
-        int   total;
+    string name;
+    int rollno;
+    int total;
     public:
-        void setDisplay();
-        void getDisplay();
-};
- 
-void student::setDisplay(){
-    cout << "Enter name: " ;
-    cin >> name;
-    cout << "Enter roll number: ";
-    cin >> rollNo;
-    cout << "Enter total marks out of 500: ";
-    cin >> total;
-}
- 
-void student::getDisplay()
-{
-    cout << "Name:"<< name<<endl;
-    cout << "Roll Number:" << rollNo<<endl; 
-    cout << "Total:" << total<<endl;
-    cout<< endl;
-}
- 
-int main()
-{
-    student std[10];
-    int n;
-     
-    cout << "Enter total number of students: ";
-    cin >> n;
-     
-    for(int i=0; i< n; i++){
-        cout << "Enter details of student " << ":\n";
-        std[i].setDisplay();
+    string getName(){
+        return name;
     }
-     
-    cout << endl;
-     
-    for(int j=0; j< n; j++){
-        cout << "Details of student " << ":\n";
-        std[j].getDisplay();
+    void setName(string n){
+        name = n;
     }
-    cout<<endl;
-    return 0;
+    int getRoll(){
+        return rollno;
+    }
+    void setRoll(int i){
+        rollno = i;
+    }
+    int getTotal(){
+        return total;
+    }
+    void setTotal(int j){
+        total = j;
+    }
 };
+int main(){
+    Student std;
+    std.setName("abc");
+    std.setRoll(1);
+    std.setTotal(325);
+    cout<<"Name: ";
+    cout<<std.getName()<<endl;
+    cout<<"Roll No.:" ;
+    cout<<std.getRoll()<<endl;
+    cout<<"Total Marks: ";
+    cout<<std.getTotal();
+}
