@@ -8,12 +8,13 @@
 // 3 - function of chordates by the object of chordates
 // 4 - function of each of its parent by the object of chordates
 //---------------------------------------------------------------------------------------------------------------
+
 #include <iostream>
 using namespace std;
 
 // base class
 class Vertebrate {
-   public:
+  public:
     void display() {
         cout << "I am an vertebrate." << endl;
     }
@@ -21,16 +22,16 @@ class Vertebrate {
 
 // base class 2
 class Invertebrate {
-   public:
-    void show() {
+  public:
+    void display() {
         cout << "I am a invertebrate." << endl;
     }
 };
 
 // derived class
 class Chordates : public Vertebrate , public Invertebrate {
-   public:
-    void info() {
+  public:
+    void display() {
         cout << "I  belong to both the categories: vertebrate as well as invertebrate" << endl;
     }
 };
@@ -44,16 +45,15 @@ int main() {
     cout << "Vertebrate" << endl;
     vertebrate.display();
     cout << "Invertebrate" << endl;
-    invertebrate.show();
+    invertebrate.display();
     cout << "Chordates" << endl;
-    chordates.info();
+    chordates.display();
     cout << endl;
     cout<< "Showing function of each of its parent"<<endl;
     cout << "Inherit From Parent Vertebrate :" << endl;
-    chordates.display();  // Parent Class function
+    chordates.Vertebrate::display();  // Parent Class function
     cout << "Inherit From Parent Invertebrate :" << endl;
-    chordates.show();
-    return 0;
+    chordates.Invertebrate::display();// Parent Class function
 }
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ public:
         cout<<"Total Fruits in Basket: "<<noOfFruits;
     }
 };
-int Fruits::noOfFruits;
+int Fruits::noOfFruits=0;
 class Orange: public Fruits
 {
 public:
@@ -89,7 +89,7 @@ public:
         cout<<"Total Orange in Basket: "<<orange<<endl;
     }
 };
-int Orange::orange;
+int Orange::orange=0;
 class Blackberry: public Fruits
 {
 public:
@@ -102,7 +102,7 @@ public:
         cout<<"Total blackberry in Basket: "<<blackberry<<endl;
     }
 };
-int Blackberry::blackberry;
+int Blackberry::blackberry=0;
 int main()
 {
     Orange a,b,c;
@@ -158,29 +158,29 @@ int main() {
 // Q#4 Create a Class calculator with functions Add(), Subtract(), Multiply(), Divide() and print their results 
 // using Print() function.
 //------------------------------------------------------------------------------------------------------------------------ 
- 
 #include <iostream>
-#include <math.h>
+#include<math.h>
 using namespace std;
-class Calculator {
-    double a, b;
+class Calculator
+{
+    int a;
+    int b;
 public:
-    void get() {
-        cout << "Enter First Number: ";
-        cin >> a;
-        cout << "Enter Second Number: ";
-        cin >> b;
+    Calculator(int x,int y)
+    {
+        a=x;
+        b=y;
     }
-    double add() {
+    double addition() { 
         return a + b;
-    }
-    double sub() {
+        }
+    double subtraction() { 
         return a - b;
-    }
-    double mul() {
+        }
+    double multiply() {
         return a * b;
-    }
-    double div() {
+        }
+    double division() {
         if (b == 0) {
             cout << "Divison By Zero" << endl;
             return INFINITY;
@@ -189,10 +189,8 @@ public:
             return a / b;
         }
     }
-    double print();
-};
-double Calculator::print(){
-    int choice;
+    void print(){
+        int choice;
     cout << "Enter 1 Add 2 Numbers"
         << "\nEnter 2 Subtract 2 Numbers"
         << "\nEnter 3 Multiply 2 Numbers"
@@ -202,36 +200,37 @@ double Calculator::print(){
     do {
         cout << "\nEnter Choice: ";
         cin >> choice;
-        Calculator cal;
         switch (choice) {
         case 1:
-            cal.get();
-            cout << "Result: " << cal.add() << endl;
+        
+            cout << "Result: " << addition() << endl;
             break;
         case 2:
-            cal.get();
-            cout << "Result: " << cal.sub() << endl;
+        
+            cout << "Result: " << subtraction() << endl;
             break;
         case 3:
-            cal.get();
-            cout << "Result: " << cal.mul() << endl;
+
+            cout << "Result: " << multiply() << endl;
             break;
         case 4:
-            cal.get();
-            cout << "Result: " << cal.div() << endl;
+
+            cout << "Result: " << division() << endl;
             break;
         }
     } while (choice >= 1 && choice <= 4);
-}
-
+    }
+};
 int main()
-{
-    Calculator cal;
+{   
+    double i ,j;
+    cout<<"Enter 1 st number";
+    cin>>i;
+    cout<<"enter 2nd number ";
+    cin>>j;
+    Calculator cal(i,j);
     cal.print();
 };
-
-
-
 
 //------------------------------------------------------------------------------------------------------------------------
 // Q#5 Create a class Student with private data members: Name, Age, Marks, RollNo.
