@@ -14,31 +14,27 @@ class Book{
     string bookName;
     string authorName;
     
-    public:
+    public:        
+        Book(int a,string b, string c){
+            bookId = a;
+            bookName = b;
+            authorName = c;
+            }
+    
+    
     void BookDetails(){
-        
-
-            cout<<"Enter Book ID:";
-            cin>>bookId;
-            cout<<"Enter Book Name:";
-            cin>>bookName;
-            cout<<"Enter Author Name:";
-            cin>>authorName;
-            cout<<"Book ID: "<<bookId<<endl;
-            cout<<"Book Name: "<<bookName<<endl;
-            cout<<"Author Name: "<<authorName;
+            cout<<"ID: "<<bookId<<endl<<"Book Name: "<<bookName<<endl<<"Author Name: "<<authorName;
             }  
 };
 
 class Library{
-    
-            Book b;
+            Book b = Book (1,"Beloved","Tony Morrison");
     public:
             void print(){
             cout <<"Details of Book"<<endl;
             b.BookDetails(); 
             }
-    };
+};
 int main (){
     Library lib;
     lib.print();
@@ -61,20 +57,20 @@ int main (){
       x = i;  
       y = j;  
     }  
-    virtual void area()=0;  
+    virtual double area()=0;  
   } ;  
        
   class rectangle : public Shape {  
     public:  
-      void area() {  
-        cout<< x *y;
+      double area() {  
+        return x *y;
       }  
   };  
        
   class circle : public Shape {  
     public:  
-      void area() {  
-        cout << (3.14 * (x * x));  
+      double area() {  
+        return (3.14 * (x * x));  
       }  
   } ;  
        
@@ -87,25 +83,23 @@ int  main()
     p = &r;  //returns the address
     p->set_value(10.0, 5.0);
     cout<<"Area of Rectangle is: ";
-    p->area();
+    cout<<r.area();
     
     cout<<endl;   
     
     p = &c;  
-    p->set_value(9.0);
+    p->set_value(9.0,0);
     cout<<"Area of Circle is: ";
-    p->area();  
+    cout<<c.area();  
        
     return 0;  
-}
-
+  }
 // -------------------------------------------------------------------------------------------------------------------------
 // Q#3 Create a class named as address which hold private data members named as houseNo, state, city, block.
 // Create a class person which hold private data member (named as firstName and lastName) and public member function 
 // (PrintDetails() which will print firstName, lastName and address of that person).Note (There is no inheritence 
 // relationship between person class and address).
 // -------------------------------------------------------------------------------------------------------------------------
-
 #include<iostream>
 using namespace std;
 class Address{
