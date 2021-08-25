@@ -1,2 +1,3 @@
 # Programming-Fundamentals-Training
-This file contain Composition&Aggregation problems and thier respective solution
+There are 3 branches regarding Programming Fundamental training
+Each Of them conatins problems and solution of Programming Fundamental and Object Oriented Programming
