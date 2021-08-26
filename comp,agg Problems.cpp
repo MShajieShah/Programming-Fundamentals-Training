@@ -15,21 +15,20 @@ class Book{
     string authorName;
     
     public:        
-        Book(int a,string b, string c){
+    void set_value (int a,string b, string c){
             bookId = a;
             bookName = b;
             authorName = c;
-            }
-    
-    
+        }
     void BookDetails(){
             cout<<"ID: "<<bookId<<endl<<"Book Name: "<<bookName<<endl<<"Author Name: "<<authorName;
             }  
 };
 
 class Library{
-            Book b = Book (1,"Beloved","Tony Morrison");
+            
     public:
+        Book b;
             void print(){
             cout <<"Details of Book"<<endl;
             b.BookDetails(); 
@@ -37,8 +36,10 @@ class Library{
 };
 int main (){
     Library lib;
+    lib.b.set_value(1,"Beloved","Toni Morrison");
     lib.print();
 }
+
 // -------------------------------------------------------------------------------------------------------------------------
 // Q#2 Create a class shape that has one abstract method area().
 // Implement this method in derived classes: Rectangle and Circle. Both classes have different formula to calculate the area
@@ -100,65 +101,51 @@ int  main()
 // (PrintDetails() which will print firstName, lastName and address of that person).Note (There is no inheritence 
 // relationship between person class and address).
 // -------------------------------------------------------------------------------------------------------------------------
-#include<iostream>
+#include <iostream>
+#include <string.h>
 using namespace std;
-class Address{
+class Address
+{
 	private:
-	int houseNo;
-	string state,city,block;
-    public:
-    int gethouseNo(){
-        return houseNo;
-    }
-    void sethouseNo(int n){
-        houseNo = n;
-    }
-    string getstate(){
-        return state;
-    }
-    void setstate(string i){
-        state = i;
-    }
-    string getcity(){
-        return city;
-    }
-    void setcity(string j){
-        city = j;
-    }
-    string getblock(){
-        return block;
-    }
-    void setblock(string k){
-        block = k;
-    }
+		int houseNo;
+		string state,city,block;
+	
+	public:
+		void AddressDetails(int a, string b, string c, string d)
+		{
+		    houseNo = a;
+		    state = b;
+		    city = c;
+		    block = d;
+		}
+		void PrintAddress(void)
+		{
+		    cout<<"Address: "<<houseNo<<"-"<<block<<" "<<city<<","<<state;
+		}
 };
-
-
-class Person{
-private:
-	string firstname;
-	string lastname;
-public:
-        Person (string a,string b){
-            firstname = a;
-            lastname = b;
-            }
-	void PrintDetails(){
-        cout<<firstname<<lastname;
-	}
+class Person
+{
+	private:
+		
+		string firstname,lastname;
+	public:
+	Address a;
+		void PersonDetails(string i, string j)
+		{
+            	firstname = i;
+            	lastname = j;
+		}
+		void PrintDetails(void)
+		{
+			cout<<"Name: "<<firstname<<lastname<<endl;
+			a.PrintAddress();
+		}
 };
-
-int main(){  
-    cout<<"Person Details"<<endl;
-    cout<<"Name: ";
-    Person p = Person("Shajie"," Shaukat");
-    p.PrintDetails();
-    cout<<endl;
-    Address ad;
-    ad.sethouseNo(1);
-    ad.setstate("Pakistan");
-    ad.setcity("Lahore");
-    ad.setblock("E");
-    cout<<"Address : ";
-    cout<<ad.gethouseNo()<<"-"<<ad.getblock()<<" "<<ad.getcity()<<","<<ad.getstate();
-    }
+int main()
+{
+	Person std;
+	cout<<"Details for Person:"<<endl;
+	std.PersonDetails("Shajie","Shaukat");
+	std.a.AddressDetails(1,"Pakistan","Lahore","E");
+	std.PrintDetails();
+}
