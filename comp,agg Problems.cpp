@@ -156,3 +156,49 @@ int main()
 	Person p = Person("Shajie","Shaukat",&ad);
 	p.PrintDetails();
 }
+
+
+// class Address
+// {
+// 	private:
+// 		int houseNo;
+// 		string state,city,block;
+	
+// 	public:
+// 		void AddressDetails(int a, string s, string c, string b)
+// 		{
+// 		    houseNo = a;
+// 		    state = s;
+// 		    city = c;
+// 		    block = b;
+// 		}
+// 		void PrintAddress()
+// 		{
+// 		    cout<<"Address: "<<houseNo<<"-"<<block<<" "<<city<<","<<state;
+// 		}
+// };
+// class Person
+// {
+// 	private:
+// 		string firstname,lastname;
+// 	public:
+// 	  Address a;
+// 		void PersonDetails(string i, string j)
+// 		{
+//             	firstname = i;
+//             	lastname = j;
+// 		}
+// 		void PrintPersonDetails()
+// 		{
+// 			cout<<"Name: "<<firstname<<lastname<<endl;
+// 			a.PrintAddress();
+// 		}
+// };
+// int main()
+// {
+// 	Person person;
+// 	cout<<"Details for Person:"<<endl;
+// 	person.PersonDetails("Shajie","Shaukat");
+// 	person.a.AddressDetails(1,"Pakistan","Lahore","E");
+// 	person.PrintPersonDetails();
+// }
