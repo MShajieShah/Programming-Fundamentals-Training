@@ -107,21 +107,30 @@ using namespace std;
 class Address
 {
 	private:
-		int houseNo;
+	int houseNo;
 		string state,city,block;
-	
 	public:
-		void AddressDetails(int a, string b, string c, string d)
+		Address(int house, string state, string city, string block)
 		{
-		    houseNo = a;
-		    state = b;
-		    city = c;
-		    block = d;
+		    this->houseNo = house;
+		    this->state = state;
+		    this->city = city;
+		    this->block = block;
 		}
-		void PrintAddress(void)
-		{
-		    cout<<"Address: "<<houseNo<<"-"<<block<<" "<<city<<","<<state;
-		}
+		
+		int gethouseNo(){
+		    return houseNo;
+		    }
+		 string getstate(){
+		     return state;
+		     }
+		 string getcity(){
+		     return city;
+		     }
+		 string getblock(){
+		     return block;
+		     }
+		
 };
 class Person
 {
@@ -129,23 +138,21 @@ class Person
 		
 		string firstname,lastname;
 	public:
-	Address a;
-		void PersonDetails(string i, string j)
+	Address*address;
+		Person(string i, string j,Address*address)
 		{
             	firstname = i;
             	lastname = j;
+            	this->address=address;
 		}
-		void PrintDetails(void)
+		void PrintDetails()
 		{
-			cout<<"Name: "<<firstname<<lastname<<endl;
-			a.PrintAddress();
+			cout<<"Name: "<<firstname<<lastname<<endl<<"Address :"<<address->gethouseNo()<< "-"<<address->getblock()<<" "<<address->getcity()<<","<<address->getstate();
 		}
 };
 int main()
 {
-	Person std;
-	cout<<"Details for Person:"<<endl;
-	std.PersonDetails("Shajie","Shaukat");
-	std.a.AddressDetails(1,"Pakistan","Lahore","E");
-	std.PrintDetails();
+	Address ad = Address(1,"Pakistan","Lahore","E");
+	Person p = Person("Shajie","Shaukat",&ad);
+	p.PrintDetails();
 }
