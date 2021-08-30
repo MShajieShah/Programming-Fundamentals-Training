@@ -13,7 +13,6 @@ class Book{
     int bookId;
     string bookName;
     string authorName;
-    
     public:        
     void set_value (int a,string b, string c){
             bookId = a;
@@ -26,20 +25,22 @@ class Book{
 };
 
 class Library{
-  
+    private:
+         Book book;
     public:
-        Book b;
-            void print(){
+    void getDetails(int bookId,string bookName,string authorName){
+            book.set_value(bookId,bookName,authorName);
+        }
+            void printDetails(){
             cout <<"Details of Book"<<endl;
             b.BookDetails(); 
             }
 };
 int main (){
-    Library lib;
-    lib.b.set_value(1,"Beloved","Toni Morrison");
-    lib.print();
+    Library library;
+    library.getDetails(1,"Beloved","Toni Morrison");
+    library.printDetails();
 }
-
 // -------------------------------------------------------------------------------------------------------------------------
 // Q#2 Create a class shape that has one abstract method area().
 // Implement this method in derived classes: Rectangle and Circle. Both classes have different formula to calculate the area
@@ -52,11 +53,11 @@ int main (){
   using namespace std;
   class Shape {  
   public:  
-    double x, y;    
+    double firstvalue, secondvalue;
     
-    void set_value(double i, double j) {  
-      x = i;  
-      y = j;  
+    void set_value(double fvalue, double svalue) {  
+      firstvalue = fvalue;
+      secondvalue = svalue;
     }  
     virtual double area()=0;  
   } ;  
@@ -64,36 +65,31 @@ int main (){
   class rectangle : public Shape {  
     public:  
       double area() {  
-        return x *y;
+        return firstvalue * secondvalue;
       }  
   };  
        
   class circle : public Shape {  
     public:  
       double area() {  
-        return (3.14 * (x * x));  
+        return (3.14 * (firstvalue * firstvalue));  
       }  
   } ;  
        
 int  main()  
   {  
-    Shape *p;  
-    rectangle r; 
-    circle c;  
-       
-    p = &r;  //returns the address
-    p->set_value(10.0, 5.0);
+    Shape *shape;  
+    rectangle rectangle; 
+    circle circle;  
+    shape = &rectangle;  //returns the address
+    shape->set_value(10.0, 5.0);
     cout<<"Area of Rectangle is: ";
-    cout<<r.area();
-    
+    cout<<rectangle.area();
     cout<<endl;   
-    
-    p = &c;  
-    p->set_value(9.0,0);
+    shape = &circle;  
+    shape->set_value(9.0,0);
     cout<<"Area of Circle is: ";
-    cout<<c.area();  
-       
-    return 0;  
+    cout<<circle.area();  
   }
 // -------------------------------------------------------------------------------------------------------------------------
 // Q#3 Create a class named as address which hold private data members named as houseNo, state, city, block.
@@ -102,7 +98,6 @@ int  main()
 // relationship between person class and address).
 // -------------------------------------------------------------------------------------------------------------------------
 #include <iostream>
-#include <string.h>
 using namespace std;
 class Address
 {
@@ -139,10 +134,10 @@ class Person
 		string firstname,lastname;
 	public:
 	Address*address;
-		Person(string i, string j,Address*address)
+		Person(string fname, string lname,Address*address)
 		{
-            	firstname = i;
-            	lastname = j;
+            	firstname = fname;
+            	lastname = lname;
             	this->address=address;
 		}
 		void PrintDetails()
@@ -153,8 +148,8 @@ class Person
 int main()
 {
 	Address ad = Address(1,"Pakistan","Lahore","E");
-	Person p = Person("Shajie","Shaukat",&ad);
-	p.PrintDetails();
+	Person person = Person("Shajie","Shaukat",&ad);
+	person.PrintDetails();
 }
 
 
